@@ -4,13 +4,14 @@
   "description": "Dependencies used for testing hasura-graphql",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/tsc && node hasura-graphql.export.js",
-    "local": "./node_modules/.bin/json-graphql-server hasura-graphql.export.js",
-    "hasura-update": "./node_modules/.bin/json2graphql https://endfront.herokuapp.com/ -s 'ForgeTech_EndFront_$1Ckness' -d hasura-graphql.export.js",
-    "hasura-overwrite": "./node_modules/.bin/json2graphql https://endfront.herokuapp.com/ --overwrite -s 'ForgeTech_EndFront_$1Ckness' -d hasura-graphql.export.js",
+    "start": "./node_modules/.bin/tsc && node dist/json.export.js",
+    "local": "./node_modules/.bin/json-graphql-server dist/json.export.js",
+    "hasura-update": "./node_modules/.bin/json2graphql https://endfront.herokuapp.com/ -k ForgeTech_EndFront_$1Ckness -d dist/json.export.js",
+    "hasura-overwrite": "./node_modules/.bin/json2graphql https://endfront.herokuapp.com/ -k ForgeTech_EndFront_$1Ckness -d dist/json.export.js --overwrite",
     "faker-local": "./node_modules/.bin/graphql-faker ./model/graphql-faker.graphql --extend http://localhost:3000",
-    "faker-hasura": "./node_modules/.bin/graphql-faker ./model/graphql-faker.graphql --extend https://endfront.herokuapp.com/v1alpha1/graphql --header 'x-hasura-admin-secret: ForgeTech_EndFront_$1Ckness",
+    "faker-hasura": "./node_modules/.bin/graphql-faker ./model/graphql-faker.graphql --extend https://endfront.herokuapp.com/v1alpha1/graphql --header x-hasura-admin-secret: ForgeTech_EndFront_$1Ckness",
     "faker": "./node_modules/.bin/graphql-faker ./model/graphql-faker.graphql",
+    "blowson": "./node_modules/.bin/blowson src/data/data.blowson.js dist/data.blowson-extended.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,15 +29,27 @@
   },
   "homepage": "https://github.com/ForgeTech/hasura-graphql#readme",
   "dependencies": {
+    "@types/jss": "^9.5.8",
+    "@types/node": "^11.9.5",
+    "blee": "^1.0.1",
+    "blowson": "^1.3.3",
     "camelcase": "^5.0.0",
+    "country-iso": "^2.0.5",
+    "country-list": "^2.1.0",
     "graphql-faker": "^1.9.0",
+    "graphql-inspector": "^0.5.1",
+    "graphql-voyager": "^1.0.0-rc.26",
     "graphqlviz": "^3.0.0",
+    "i18n-iso-countries": "^3.7.8",
+    "iso-language-codes": "^1.0.2",
     "json-graphql-server": "^2.1.3",
     "json2graphql": "^0.1.3",
+    "jss": "^9.8.7",
+    "known-css-properties": "^0.12.0",
+    "langs": "^2.0.0",
+    "locale-code": "^2.0.1",
     "material-colors": "^1.2.6",
-    "typescript": "^3.3.3333"
-  },
-  "devDependencies": {
-    "@types/node": "^11.9.5"
+    "typescript": "^3.3.3333",
+    "world-countries": "^2.1.0"
   }
 }

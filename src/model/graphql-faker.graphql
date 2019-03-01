@@ -1,0 +1,30 @@
+type User {
+  id: Number @fake(type: id)
+  firstName: String @fake(type: firstName)
+  lastName: String @fake(type: lastName)
+  gender: String @examples(values: ["male", "female"])
+  email: String @fake(type: email)
+}
+
+# type Color {
+#     id: Number @fake(type: id)
+#     name: String @fake(type: name)
+#     format: ColorFormat
+#     value: String
+#     colorSet_id: Number
+# }
+
+# type ColorSet {
+#     id: Number
+#     name: String @fake(type: name)
+#     colors: Color[] @fake(type: Color)
+# }
+
+type Query {
+  user(id: ID): User
+  # color(id: ID): Color
+  # colorSet(id: ID): ColorSet
+  allUsers: [User!]
+  # allColors: [Color!]
+  # allColorSet: [ColorSet!]
+}
