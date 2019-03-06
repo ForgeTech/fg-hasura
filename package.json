@@ -6,11 +6,16 @@
   "scripts": {
     "start": "./node_modules/.bin/tsc && node dist/json.export.js",
     "local": "./node_modules/.bin/json-graphql-server dist/json.export.js",
-    "hasura-update": "./node_modules/.bin/json2graphql https://endfront.herokuapp.com/ -k ForgeTech_EndFront_$1Ckness -d dist/json.export.js",
-    "hasura-overwrite": "./node_modules/.bin/json2graphql https://endfront.herokuapp.com/ -k ForgeTech_EndFront_$1Ckness -d dist/json.export.js --overwrite",
-    "faker-local": "./node_modules/.bin/graphql-faker ./model/graphql-faker.graphql --extend http://localhost:3000",
-    "faker-hasura": "./node_modules/.bin/graphql-faker ./model/graphql-faker.graphql --extend https://endfront.herokuapp.com/v1alpha1/graphql --header x-hasura-admin-secret: ForgeTech_EndFront_$1Ckness",
-    "faker": "./node_modules/.bin/graphql-faker ./model/graphql-faker.graphql",
+    "swagger-to-graphql": "swagger-to-graphql --swagger=./src/swagger/powerbot-api-v0.swagger.json > ./dist/powerbot-api-v0.swagger.graphql",
+    "inspect-local-remote": "./node_modules/.bin/graphql-inspector NOT YET DONE",
+    "docker-hasura-up": "docker-compose up -d",
+    "docker-hasura-down": "docker-compose down",
+    "docker-hasura-import": "./node_modules/.bin/json2graphql http://localhost:8080/ -d dist/json.export.js",
+    "docker-hasura-faker": "./node_modules/.bin/graphql-faker ./src/model/docker-hasura-faker.graphql --extend http://localhost:8080/v1alpha1/graphql --header x-hasura-admin-secret: admin",
+    "heroku-hasura-update": "./node_modules/.bin/json2graphql https://endfront.herokuapp.com/ -k ForgeTech_EndFront_$1Ckness -d dist/json.export.js",
+    "heroku-hasura-overwrite": "./node_modules/.bin/json2graphql https://endfront.herokuapp.com/ -k ForgeTech_EndFront_$1Ckness -d dist/json.export.js -o",
+    "heroku-hasura-faker": "./node_modules/.bin/graphql-faker ./model/heroku-hasura-faker.graphql --extend https://endfront.herokuapp.com/v1alpha1/graphql --header x-hasura-admin-secret: ForgeTech_EndFront_$1Ckness",
+    "faker": "./node_modules/.bin/graphql-faker ./src/model/faker.graphql",
     "blowson": "./node_modules/.bin/blowson src/data/data.blowson.js dist/data.blowson-extended.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -37,7 +42,6 @@
     "country-iso": "^2.0.5",
     "country-list": "^2.1.0",
     "graphql-faker": "^1.9.0",
-    "graphql-inspector": "^0.5.1",
     "graphql-voyager": "^1.0.0-rc.26",
     "graphqlviz": "^3.0.0",
     "i18n-iso-countries": "^3.7.8",
@@ -51,5 +55,10 @@
     "material-colors": "^1.2.6",
     "typescript": "^3.3.3333",
     "world-countries": "^2.1.0"
+  },
+  "devDependencies": {
+    "graphql-inspector": "^0.5.1",
+    "language-list": "0.0.3",
+    "swagger-to-graphql": "^1.4.5"
   }
 }

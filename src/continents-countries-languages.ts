@@ -6,7 +6,7 @@ const countryImports = require('./../node_modules/world-countries/dist/countries
 const countryIso = require('./../node_modules/country-iso/index');
 
 const language = require('./../node_modules/language-list/language-list');
-const langs = require('./../node_modules/langs/data');
+const langs = require('./../node_modules/langs');
 
 class Translation {
     id: Number | null;
@@ -146,6 +146,8 @@ function prepareContinentsCountiesLanguages(){
     for( let lang in langs.all() ){
         let language = new Language();
         language.id = languageIndex++;
+        console.log(langs.all());
+        break;
     }
     
     // Iterate all keys available on color-object and transform them into
@@ -204,7 +206,7 @@ function prepareContinentsCountiesLanguages(){
         country: countriesToExport,
         language: languagesToExport
     }
-    console.log( exportObject );
+    // console.log( exportObject );
     return exportObject
 }
 export default prepareContinentsCountiesLanguages();

@@ -1,8 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// i18n-iso-countries contains local files for country-names
 const countryI18n = require('./../node_modules/i18n-iso-countries/index');
+// Provides basic set of world-country data to be imported into database
 const countryImports = require('./../node_modules/world-countries/dist/countries.json');
+// Provides capabilities to query lat,lng and receive countries they are contained in
 const countryIso = require('./../node_modules/country-iso/index');
+const language = require('./../node_modules/language-list/language-list');
+const langs = require('./../node_modules/langs');
 class Translation {
     constructor() {
         this.id = null;
@@ -15,7 +20,12 @@ class Translation {
 class Language {
     constructor() {
         this.id = -1;
+        this.local = '';
         this.name = '';
+        this.ISO639_1 = '';
+        this.ISO639_2_2T = '';
+        this.ISO639_2B = '';
+        this.ISO639_3 = '';
     }
 }
 class Country {
@@ -61,18 +71,22 @@ class Continent {
         this.name = '';
     }
 }
-/**
- *
- */
 function prepareContinentsCountiesLanguages() {
     let continentsToExport = [];
     let countriesToExport = [];
     let languagesToExport = [];
     let regionsToExport = [];
-    let continentsIndex = 0;
-    let countriesIndex = 0;
-    let languagesIndex = 0;
-    let regionsIndex = 0;
+    let continentIndex = 0;
+    let countryIndex = 0;
+    let languageIndex = 0;
+    let regionIndex = 0;
+    function getLanguage(languageName) {
+        let createdOrFoundLanguage = languagesToExport.find(language => language.name === languageName);
+        if (createdOrFoundLanguage === undefined) {
+            createdOrFoundLanguage = new Language();
+        }
+        return createdOrFoundLanguage;
+    }
     function getContinent(continentName) {
         let createdOrFoundContinent = continentsToExport.find(continent => continent.name === continentName);
         if (createdOrFoundContinent === undefined) {
@@ -87,6 +101,13 @@ function prepareContinentsCountiesLanguages() {
         }
         return createdOrFoundRegion;
     }
+    // Iterate over language-codes
+    for (let lang in langs.all()) {
+        let language = new Language();
+        language.id = languageIndex++;
+        console.log(langs.all());
+        break;
+    }
     // Iterate all keys available on color-object and transform them into
     // color- and colorSet-instances
     for (let countryKey in countryImports) {
@@ -94,7 +115,7 @@ function prepareContinentsCountiesLanguages() {
         // On imported country-data continent-name is on region-attribute
         let continent = getContinent(countryImported.region);
         if (continent.id === null) {
-            continent.id = continentsIndex++;
+            continent.id = continentIndex++;
             continent.name = countryImported.region;
             continentsToExport.push(continent);
         }
@@ -103,13 +124,13 @@ function prepareContinentsCountiesLanguages() {
         let subregionName = countryImported.subregion ? countryImported.subregion : countryImported.region;
         let region = getRegion(subregionName);
         if (region.id === null) {
-            region.id = regionsIndex++;
+            region.id = regionIndex++;
             region.name = subregionName;
             region.continent_id = continent.id;
             regionsToExport.push(region);
         }
         let country = new Country();
-        country.id = countriesIndex++;
+        country.id = countryIndex++;
         country.continent_id = continent.id;
         country.region_id = region.id;
         country.name = countryImported.name;
@@ -141,8 +162,9 @@ function prepareContinentsCountiesLanguages() {
         continent: continentsToExport,
         region: regionsToExport,
         country: countriesToExport,
+        language: languagesToExport
     };
-    console.log(exportObject);
+    // console.log( exportObject );
     return exportObject;
 }
 exports.default = prepareContinentsCountiesLanguages();
