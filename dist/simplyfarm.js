@@ -658,12 +658,14 @@ exports.default = {
         {
             "id": 0,
             "project_id": 0,
+            // "translation_id": null,
             "name": "Translation-0",
             "createdAt": new Date(),
             "updatedAt": new Date()
         },
         {
             "id": 1,
+            // "project_id": null,
             "translation_id": 0,
             "name": "Translation-1",
             "createdAt": new Date(),
@@ -671,6 +673,7 @@ exports.default = {
         },
         {
             "id": 2,
+            // "project_id": null,
             "translation_id": 0,
             "name": "Translation-2",
             "createdAt": new Date(),

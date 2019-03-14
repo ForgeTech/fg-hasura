@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = {
+export default {
     "project": [
         {
             "id": 0,
@@ -93,8 +91,8 @@ exports.default = {
         {
             "id": 0,
             "name": "LevelToLayout-0",
-            "level_id": 0,
-            "layout_id": 0,
+            "level_id": 0, 
+            "layout_id": 0, 
             "createdAt": new Date(),
             "updatedAt": new Date()
         }
@@ -280,7 +278,7 @@ exports.default = {
             "originY": 0.5,
             "precision": 1,
             "selector": null,
-            "pointerEvents": false,
+            "pointerEvents":false,
             "onReady": null,
         },
     ],
@@ -388,20 +386,20 @@ exports.default = {
             "grid-template": [
                 ["[row1-start]", "header header header", "25px", "[row1-end]"],
                 ["row2-start]", "footer footer footer", "25px", "[row2-end]"],
-                ["/", "auto", "50px", "auto"]
+                [ "/", "auto", "50px", "auto"]
             ],
             "grid-column-gap": "10px",
             "grid-row-gap": "20px",
             // "grid-gap": "5px 10px",
-            "justify-items": "center",
-            "align-items": "center",
+            "justify-items": "center", // start | end | center | stretch
+            "align-items": "center", // start | end | center | stretch;
             // "place-items": "stretch stretch", // align-items justify-items
-            "justify-content": "space-around",
-            "align-content": "",
+            "justify-content": "space-around", // start | end | center | stretch | space-around | space-between | space-evenly
+            "align-content": "", // start | end | center | stretch | space-around | space-between | space-evenly
             // "place-content": "center center", // align-content justify-content
             "grid-auto-columns": "50px",
             "grid-auto-rows": "50px",
-            "grid-auto-flow": "row",
+            "grid-auto-flow": "row", // row | column | row dense | column dense
         }
     ],
     "layoutGridItem": [
@@ -411,14 +409,14 @@ exports.default = {
             "name": "LayoutGridItem-0",
             "createdAt": new Date(),
             "updateAt": new Date(),
-            "grid-area": "header",
-            "justify-self": "start",
-            "align-self": "start",
+            "grid-area": "header", // <name> | <row-start> / <column-start> / <row-end> / <column-end>"
+            "justify-self": "start", // start | end | center | stretch
+            "align-self": "start", // start | end | center | stretch
             // place-self: align-self justify-self;
-            "grid-column-start": "1",
-            "grid-column-end": "2",
-            "grid-row-start": "1",
-            "grid-row-end": "2",
+            "grid-column-start": "1",// <number> | <name> | span <number> | span <name> | auto
+            "grid-column-end": "2",// <number> | <name> | span <number> | span <name> | auto
+            "grid-row-start": "1",  //<number> | <name> | span <number> | span <name> | auto
+            "grid-row-end": "2",// <number> | <name> | span <number> | span <name> | auto
         },
         {
             "id": 1,
@@ -426,14 +424,14 @@ exports.default = {
             "name": "LayoutGridItem-1",
             "createdAt": new Date(),
             "updateAt": new Date(),
-            "grid-area": "footer",
-            "justify-self": "end",
-            "align-self": "end",
+            "grid-area": "footer", // <name> | <row-start> / <column-start> / <row-end> / <column-end>"
+            "justify-self": "end", // start | end | center | stretch
+            "align-self": "end", // start | end | center | stretch
             // place-self: align-self justify-self;
-            "grid-column-start": "5",
-            "grid-column-end": "8",
-            "grid-row-start": "5",
-            "grid-row-end": "9" // <number> | <name> | span <number> | span <name> | auto
+            "grid-column-start": "5",// <number> | <name> | span <number> | span <name> | auto
+            "grid-column-end": "8",// <number> | <name> | span <number> | span <name> | auto
+            "grid-row-start": "5",  //<number> | <name> | span <number> | span <name> | auto
+            "grid-row-end": "9"// <number> | <name> | span <number> | span <name> | auto
         },
         {
             "id": 2,
@@ -441,14 +439,14 @@ exports.default = {
             "name": "LayoutGridItem-2",
             "createdAt": new Date(),
             "updateAt": new Date(),
-            "grid-area": "main",
-            "justify-self": "center",
-            "align-self": "stretch",
+            "grid-area": "main", // <name> | <row-start> / <column-start> / <row-end> / <column-end>"
+            "justify-self": "center", // start | end | center | stretch
+            "align-self": "stretch", // start | end | center | stretch
             // place-self: align-self justify-self;
-            "grid-column-start": "1",
-            "grid-column-end": "span-col4-start",
-            "grid-row-start": "1",
-            "grid-row-end": "span 3" // <number> | <name> | span <number> | span <name> | auto
+            "grid-column-start": "1",// <number> | <name> | span <number> | span <name> | auto
+            "grid-column-end": "span-col4-start",// <number> | <name> | span <number> | span <name> | auto
+            "grid-row-start": "1",  //<number> | <name> | span <number> | span <name> | auto
+            "grid-row-end": "span 3"// <number> | <name> | span <number> | span <name> | auto
         }
     ],
     "layoutToLayoutFlex": [
@@ -467,11 +465,11 @@ exports.default = {
             "name": "LayoutFlex-0",
             "createdAt": new Date(),
             "updatedAt": new Date(),
-            "flex-direction": "row",
-            "flex-wrap": "wrap",
+            "flex-direction": "row", // row | row-reverse | column | column-reverse;
+            "flex-wrap": "wrap", // nowrap | wrap | wrap-reverse;"
             // flex-flow: <‘flex-direction’> || <‘flex-wrap’>
-            "justify-content": "flex-start",
-            "align-items": "stretch",
+            "justify-content": "flex-start", // flex-start | flex-end | center | space-between | space-around | space-evenly
+            "align-items": "stretch",// stretch | flex-start | flex-end | center | baseline
             "align-content": "flex-start" // flex-start | flex-end | center | space-between | space-around | stretch
         }
     ],
@@ -482,10 +480,10 @@ exports.default = {
             "name": "LayoutFlexItem-0",
             "createdAt": new Date(),
             "updateAt": new Date(),
-            "align-self": "auto",
-            "flex-basis": "auto",
-            "order": 0,
-            "flex-grow": 0,
+            "align-self": "auto", // auto | flex-start | flex-end | center | baseline | stretch;"
+            "flex-basis": "auto",// <length> | auto; /* default auto */
+            "order": 0, // <integer>; /* default is 0 */
+            "flex-grow": 0, // <number>; /* default 0 */
             "flex-shrink": 0 // <number>; /* default 0 */
         },
         {
@@ -494,11 +492,11 @@ exports.default = {
             "name": "LayoutFlexItem-1",
             "createdAt": new Date(),
             "updateAt": new Date(),
-            "align-self": "flex-start",
-            "flex-basis": "20%",
-            "order": 1,
-            "flex-grow": 1,
-            "flex-shrink": 1,
+            "align-self": "flex-start", // auto | flex-start | flex-end | center | baseline | stretch;"
+            "flex-basis": "20%",// <length> | auto; /* default auto */
+            "order": 1, // <integer>; /* default is 0 */
+            "flex-grow": 1, // <number>; /* default 0 */
+            "flex-shrink": 1, // <number>; /* default 0 */
         },
         {
             "id": 2,
@@ -506,11 +504,11 @@ exports.default = {
             "name": "LayoutFlexItem-2",
             "createdAt": new Date(),
             "updateAt": new Date(),
-            "align-self": "auto",
-            "flex-basis": "75px",
-            "order": 2,
-            "flex-grow": 1,
-            "flex-shrink": 2,
+            "align-self": "auto", // auto | flex-start | flex-end | center | baseline | stretch;"
+            "flex-basis": "75px",// <length> | auto; /* default auto */
+            "order": 2, // <integer>; /* default is 0 */
+            "flex-grow": 1, // <number>; /* default 0 */
+            "flex-shrink": 2, // <number>; /* default 0 */
         },
     ],
     "layoutToLayoutDefault": [
@@ -571,8 +569,8 @@ exports.default = {
         {
             "id": 0,
             "name": "LayoutToPosition-0",
-            "layout_id": 0,
-            "position_id": 0,
+            "layout_id": 0, 
+            "position_id": 0, 
             "createdAt": new Date(),
             "updatedAt": new Date()
         }
@@ -658,12 +656,14 @@ exports.default = {
         {
             "id": 0,
             "project_id": 0,
+            // "translation_id": null,
             "name": "Translation-0",
             "createdAt": new Date(),
             "updatedAt": new Date()
         },
         {
             "id": 1,
+            // "project_id": null,
             "translation_id": 0,
             "name": "Translation-1",
             "createdAt": new Date(),
@@ -671,10 +671,11 @@ exports.default = {
         },
         {
             "id": 2,
+            // "project_id": null,
             "translation_id": 0,
             "name": "Translation-2",
             "createdAt": new Date(),
             "updatedAt": new Date()
         },
     ],
-};
+}

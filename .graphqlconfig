@@ -1,0 +1,31 @@
+{
+  "schemaPath": "dist/docker-hasura-schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "dev": {
+        "url": "http://localhost:8080/graphql",
+        "headers": {
+          "Authorization": "Bearer ${env:AUTH_TOKEN_ENV}"
+        },
+        "subscription": {
+          "url": "ws://example.com/graphql",
+          "connectionParams": {
+            "Token": "${env:YOUR_APP_TOKEN}"
+          }
+        }
+      },
+      "prod": {
+        "url": "https://endfront.herokuapp.com/",
+        "headers": {
+          "Authorization": "Bearer ${env:AUTH_TOKEN_ENV}"
+        },
+        "subscription": {
+          "url": "ws://example.com/graphql",
+          "connectionParams": {
+            "Token": "${env:YOUR_APP_TOKEN}"
+          }
+        }
+      }
+    }
+  }
+}

@@ -64,6 +64,34 @@ class ColorToColorSet {
         this.color_id = null;
     }
 }
+class GradientType {
+    id: Number | null;
+    name: string;
+    constructor(){
+        this.id = 0;
+        this.name = '';
+    }
+}
+class GradientStop {
+    id: Number | null;
+    // color: Color | null;
+    alpha: Number;
+    // gradient_id: 0;
+    constructor(){
+        this.id = 0;
+        // this.color = ;
+        this.alpha = 1;
+        // gradie
+    }
+}
+class Gradient {
+    id: Number | null;
+    name: string;
+    constructor(){
+        this.id = 0;
+        this.name = '';
+    }
+}
 /**
  * Prepare Colors and ColorSets for use with jsonToGraphql importers by
  * assigning them with ids and additional meta-data
