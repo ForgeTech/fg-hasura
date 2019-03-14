@@ -1,9 +1,9 @@
-import * as colorSetsColors from './colorsets-colors';
-import * as continentsCountriesLanguages from './continents-countries-languages';
+import * as color from './colors';
+import * as world from './world';
 import * as endfront from './endfront';
 let mergedExports = { 
-    ...colorSetsColors.default, 
-    ...continentsCountriesLanguages.default,
+    ...color.default,
+    ...world.default,
     ...endfront.default
 };
 // console.log( mergedExports );

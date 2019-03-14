@@ -1,7 +1,7 @@
 "use strict";
 const tslib_1 = require("tslib");
-const colorSetsColors = tslib_1.__importStar(require("./colorsets-colors"));
-const continentsCountriesLanguages = tslib_1.__importStar(require("./continents-countries-languages"));
+const color = tslib_1.__importStar(require("./colors"));
+const world = tslib_1.__importStar(require("./world"));
 const endfront = tslib_1.__importStar(require("./endfront"));
-let mergedExports = Object.assign({}, colorSetsColors.default, continentsCountriesLanguages.default, endfront.default);
+let mergedExports = Object.assign({}, color.default, world.default, endfront.default);
 module.exports = mergedExports;
