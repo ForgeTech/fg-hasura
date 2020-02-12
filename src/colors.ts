@@ -117,7 +117,7 @@ class Gradient {
  * @param colors Object containing sets of Colors and ColorSets
  */
 function prepareColorSetsAndColors(): any {
-    const materialColorsKey: string = 'md'
+    const materialColorsKey: string = ''
     let colorsToExport: Color[] = [];
     let colorSetsToExport: ColorSet[] = [];
     let colorToColorSetToExport: ColorToColorSet[] = [];
@@ -136,7 +136,7 @@ function prepareColorSetsAndColors(): any {
     let crayolaColorGroup = new ColorGroup();
     crayolaColorGroup.id = 1;
     crayolaColorGroup.name = 'Cryola Colors';
-    crayolaColorGroup.describtion = 'Colorsets defined by Cryola pencil and crayon producer'
+    crayolaColorGroup.describtion = 'Colorsets defined by cryola pencil and crayon producer'
     colorGroupsToExport.push( crayolaColorGroup );
     let pantoneColorGroup = new ColorGroup();
     pantoneColorGroup.id = 2;
@@ -145,18 +145,18 @@ function prepareColorSetsAndColors(): any {
     colorGroupsToExport.push( pantoneColorGroup );
     let x11ColorGroup = new ColorGroup();
     x11ColorGroup.id = 3;
-    x11ColorGroup.name = 'x11';
-    x11ColorGroup.describtion = 'Colorsets defined for X Window System (X11, or simply X), a windowing system for bitmap displays, common on Unix-like operating systems.'
+    x11ColorGroup.name = 'X11';
+    x11ColorGroup.describtion = 'Colorsets defined for X window system (X11, or simply X), a windowing system for bitmap displays, common on unix-like operating systems.'
     colorGroupsToExport.push( x11ColorGroup );
     let htmlColorGroup = new ColorGroup();
     htmlColorGroup.id = 4;
-    htmlColorGroup.name = 'html';
-    htmlColorGroup.describtion = 'Colorsets defined by HTML4 standard'
+    htmlColorGroup.name = 'Html4';
+    htmlColorGroup.describtion = 'Colorset defined by HTML4'
     colorGroupsToExport.push( htmlColorGroup );
     let cssColorGroup = new ColorGroup();
     cssColorGroup.id = 5;
-    cssColorGroup.name = 'css';
-    cssColorGroup.describtion = 'Colorsets defined by HTML5/CSS3'
+    cssColorGroup.name = 'HTML5';
+    cssColorGroup.describtion = 'Colorset defined by HTML5/CSS3'
     colorGroupsToExport.push( cssColorGroup );
 
     // Add default colorSet for colors not contianed in a colorSet-Object
@@ -216,7 +216,6 @@ function prepareColorSetsAndColors(): any {
         colorSet.colorGroup_id = colorGroup.id;
         
         colorToColorSetToExport.push( colorToColorSet );
-
         colorsToExport.push( color );
         return color;
     }
@@ -226,49 +225,49 @@ function prepareColorSetsAndColors(): any {
         if ( googleMaterialColors[colorSetKey] instanceof Object ) {
             let colorSet: ColorSet = new ColorSet();
             colorSet.id = colorSetIndex++;
-            colorSet.name = camelCase( [ materialColorsKey, colorSetKey] );
+            colorSet.name = camelCase( [ materialColorsKey, ' ', colorSetKey] );
             for (let colorKey in googleMaterialColors[ colorSetKey ] ){
-                createAndSetColorToExport( googleMaterialColorGroup, colorSet, camelCase( [ materialColorsKey, colorSetKey, colorKey ] ), googleMaterialColors[ colorSetKey ][ colorKey ] );
+                createAndSetColorToExport( googleMaterialColorGroup, colorSet, camelCase( [ materialColorsKey, colorSetKey, ' ', colorKey ] ), googleMaterialColors[ colorSetKey ][ colorKey ] );
             }
             colorSetsToExport.push( colorSet );
         } 
         // means iterated key only contains a single color to be added to defaultColorSet
         else {
-            createAndSetColorToExport( googleMaterialColorGroup, defaultColorSet, camelCase( [ materialColorsKey, colorSetKey ] ), googleMaterialColors[ colorSetKey ] )
+            createAndSetColorToExport( googleMaterialColorGroup, defaultColorSet, camelCase( [ materialColorsKey, ' ', colorSetKey ] ), googleMaterialColors[ colorSetKey ] )
         }
     }
     // Add default colorSet for colors not contianed in a colorSet-Object
     let pantoneColorSet: ColorSet = new ColorSet();
     pantoneColorSet.id = colorSetIndex++;
-    pantoneColorSet.name = camelCase( [ 'pantone' ] );
+    pantoneColorSet.name = camelCase( [ 'Pantone' ] );
     colorSetsToExport.push(pantoneColorSet);
     for( let color in pantone ){
         createAndSetColorToExport(pantoneColorGroup, pantoneColorSet, color, pantone[color] )
     }
     let htmlColorSet: ColorSet = new ColorSet();
     htmlColorSet.id = colorSetIndex++;
-    htmlColorSet.name = camelCase( [ 'html' ] );
+    htmlColorSet.name = camelCase( [ 'HTML4' ] );
     colorSetsToExport.push(htmlColorSet);
     for( let color in html ){
         createAndSetColorToExport(htmlColorGroup, htmlColorSet, color, html[color] )
     }
     let cssColorSet: ColorSet = new ColorSet();
     cssColorSet.id = colorSetIndex++;
-    cssColorSet.name = camelCase( [ 'css' ] );
+    cssColorSet.name = camelCase( [ 'HTML5' ] );
     colorSetsToExport.push(cssColorSet);
     for( let color in css ){
         createAndSetColorToExport(cssColorGroup, cssColorSet, color, css[color] )
     }
     let x11ColorSet: ColorSet = new ColorSet();
     x11ColorSet.id = colorSetIndex++;
-    x11ColorSet.name = camelCase( [ 'x11Colors' ] );
+    x11ColorSet.name = camelCase( [ 'Colors' ] );
     colorSetsToExport.push(x11ColorSet);
     for( let color in x11 ){
         createAndSetColorToExport( x11ColorGroup, x11ColorSet, color, x11[color] )
     }
     let x11GraysColorSet: ColorSet = new ColorSet();
     x11GraysColorSet.id = colorSetIndex++;
-    x11GraysColorSet.name = camelCase( [ 'x11Grays' ] );
+    x11GraysColorSet.name = camelCase( [ 'Grays' ] );
     colorSetsToExport.push(x11GraysColorSet);
     for( let color in x11Grays ){
         createAndSetColorToExport( x11ColorGroup, x11GraysColorSet, color, x11Grays[color] )
@@ -276,42 +275,42 @@ function prepareColorSetsAndColors(): any {
 
     let crayola1903ColorSet: ColorSet = new ColorSet();
     crayola1903ColorSet.id = colorSetIndex++;
-    crayola1903ColorSet.name = camelCase( [ 'crayola1903' ] );
+    crayola1903ColorSet.name = camelCase( [ 'Crayola 1903' ] );
     colorSetsToExport.push(crayola1903ColorSet);
     for( let color in crayola1903 ){
         createAndSetColorToExport( crayolaColorGroup, crayola1903ColorSet, color, crayola1903[color] )
     }
     let crayola48ColorSet: ColorSet = new ColorSet();
     crayola48ColorSet.id = colorSetIndex++;
-    crayola48ColorSet.name = camelCase( [ 'crayola48' ] );
+    crayola48ColorSet.name = camelCase( [ 'Crayola 48' ] );
     colorSetsToExport.push(crayola48ColorSet);
     for( let color in crayola48 ){
         createAndSetColorToExport( crayolaColorGroup, crayola48ColorSet, color, crayola48[color] )
     }
     let crayola64ColorSet: ColorSet = new ColorSet();
     crayola64ColorSet.id = colorSetIndex++;
-    crayola64ColorSet.name = camelCase( [ 'crayola64' ] );
+    crayola64ColorSet.name = camelCase( [ 'Crayola 64' ] );
     colorSetsToExport.push(crayola64ColorSet);
     for( let color in crayola64 ){
         createAndSetColorToExport( crayolaColorGroup, crayola64ColorSet, color, crayola64[color] )
     }
     let crayolaFluorescentColorSet: ColorSet = new ColorSet();
     crayolaFluorescentColorSet.id = colorSetIndex++;
-    crayolaFluorescentColorSet.name = camelCase( [ 'crayolaFluorescent' ] );
+    crayolaFluorescentColorSet.name = camelCase( [ 'Crayola Fluorescent' ] );
     colorSetsToExport.push(crayolaFluorescentColorSet);
     for( let color in crayolaFluorescent ){
         createAndSetColorToExport( crayolaColorGroup, crayolaFluorescentColorSet, color, crayolaFluorescent[color] )
     }
     let crayolaModernColorSet: ColorSet = new ColorSet();
     crayolaModernColorSet.id = colorSetIndex++;
-    crayolaModernColorSet.name = camelCase( [ 'crayolaModern' ] );
+    crayolaModernColorSet.name = camelCase( [ 'Crayola Modern' ] );
     colorSetsToExport.push(crayolaModernColorSet);
     for( let color in crayolaModern ){
         createAndSetColorToExport( crayolaColorGroup, crayolaModernColorSet, color, crayolaModern[color] )
     }
     let munsellCrayolaColorSet: ColorSet = new ColorSet();
     munsellCrayolaColorSet.id = colorSetIndex++;
-    munsellCrayolaColorSet.name = camelCase( [ 'munsellCrayola' ] );
+    munsellCrayolaColorSet.name = camelCase( [ 'Munsell Crayola' ] );
     colorSetsToExport.push(munsellCrayolaColorSet);
     for( let color in munsellCrayola ){
         createAndSetColorToExport( crayolaColorGroup, munsellCrayolaColorSet, color, munsellCrayola[color] )
